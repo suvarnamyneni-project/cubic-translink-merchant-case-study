@@ -1,502 +1,436 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Translink Merchant: go card sales on one handheld · Suvarna Myneni</title>
-  <meta name="description" content="UX case study by Suvarna Myneni: the Translink Merchant Android app designed for Cubic Transportation Systems, used by go card retailers in South East Queensland to sell, top up, refund and report.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Translink Merchant — Case Study · Suvarna Myneni</title>
+<meta name="description" content="UX case study by Suvarna Myneni: the Translink Merchant Android app designed for Cubic Transportation Systems, used by go card retailers in South East Queensland to sell, top up, refund and report.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="case-study.css">
+<style>
+.table-scroll{overflow-x:auto}
+.cs-cover figcaption{padding:10px 16px 14px;font-size:14px}
+img{height:auto}
+</style>
 </head>
 <body>
-  <a class="skip" href="#problem">Skip to content</a>
-  <div class="progress" aria-hidden="true"></div>
-  <nav class="top" aria-label="Site">
-    <div class="bar">
-      <a class="brand" href="#top">Suvarna Myneni</a>
-      <div class="links">
-        <a href="#problem">Problem</a>
-        <a href="#primary">Research</a>
-        <a href="#decisions">Decisions</a>
-        <a href="#final">Designs</a>
-        <a href="#outcome">Outcome</a>
-        <a href="https://suvarnamyneni-project.github.io">Portfolio</a>
-      </div>
-    </div>
-  </nav>
+<nav class="cs-nav"><div class="wrap">
+  <a class="back" href="https://suvarnamyneni-project.github.io/">← All work</a>
+  <div class="links">
+    <a href="#role">My Role</a><a href="#design">Design Process</a><a href="#problem">Problem</a><a href="#stakeholders">Stakeholders</a><a href="#users">End Users</a><a href="#research">Research</a><a href="#competitive">Competitive</a><a href="#personas">Personas</a><a href="#decisions">Decisions</a><a href="#prototype">Prototype</a><a href="#uikit">UI Kit</a><a href="#final">Final Design</a><a href="#outcome">Outcome</a><a href="#metrics">Metrics</a>
+  </div>
+</div></nav>
 
-  <header class="hero" id="top">
-    <div class="wrap">
-      <p class="eyebrow">UX case study · Cubic Transportation Systems · Translink, South East Queensland</p>
-      <h1>Translink Merchant</h1>
-      <p class="lead">An Android app for the shops that sell Translink go cards around Brisbane and South East Queensland. Clerks use it to read a card and take payment. They load value or a pass, print the receipt and close the shift. Managers and admins also use it to run staff accounts and the device itself.</p>
-      <div class="meta">
-        <div><b>Client</b>Cubic Transportation Systems, which runs the go card system for Translink</div>
-        <div><b>Product</b>Translink Merchant, a retailer point-of-sale app on an Android handheld with a card reader and printer</div>
-        <div><b>My role</b>UX/UI Design: end-to-end flows, prototyping, UI kit</div>
-        <div><b>Timeline</b>2025</div>
-      </div>
-      <p class="note">Worked with Cubic product, engineering and back-office teams. Every screen on this page is cropped from the design board. Public facts link to their sources in Secondary Research.</p>
-      <figure class="hero-shot">
-        <button type="button" class="shot" data-caption="Splash, empty and filled log-in, and the Admin home screen of Translink Merchant.">
-          <img src="images/hero-screens.webp" width="1167" height="500" alt="Four Android screens: the Translink Merchant splash screen on navy, the log-in screen with 6-digit User ID and PIN fields and a pink Log In button, the same screen filled in with a numeric keypad, and the Admin home screen with Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Settings and Log Out tiles." fetchpriority="high">
-        </button>
-        <figcaption><strong>From log-in to home.</strong> Splash, log in (empty and filled), and the Admin home. All four screens are from flow LO1 on the board.</figcaption>
-      </figure>
-    </div>
-  </header>
+<header class="cs-hero"><div class="wrap">
+  <div class="eyebrow">Case Study · Cubic Transportation Systems</div>
+  <h1>Translink Merchant</h1>
+  <p class="lede">An Android app for the shops that sell Translink go cards around Brisbane and South East Queensland. Clerks read a card, take payment, load value or a pass, print the receipt and close the shift.</p>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>UX/UI Design</dd></div>
+    <div><dt>Timeline</dt><dd>2025</dd></div>
+    <div><dt>Team</dt><dd>Cubic product, engineering, back office</dd></div>
+    <div><dt>Platform</dt><dd>Android handheld, card reader and printer</dd></div>
+    <div><dt>Tools</dt><dd>Figma</dd></div>
+  </dl>
+  <figure class="cs-cover"><img src="images/hero-screens.webp" width="1167" height="500" alt="Four Android screens: the Translink Merchant splash screen on navy, the log-in screen with 6-digit User ID and PIN fields and a pink Log In button, the same screen filled in with a numeric keypad, and the Admin home screen with Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Settings and Log Out tiles." fetchpriority="high"><figcaption>From log-in to home. Splash, log in (empty and filled), and the Admin home. All four screens are from flow LO1 on the board.</figcaption></figure>
+</div></header>
 
-  <div class="shell">
-    <nav class="rail" aria-label="On this page">
-      <a href="#problem">Design problem</a>
-      <a href="#stakeholders">Stakeholders</a>
-      <a href="#users">End-users</a>
-      <a href="#primary">Primary research</a>
-      <a href="#secondary">Secondary research</a>
-      <a href="#competitive">Competitive analysis</a>
-      <a href="#personas">User personas</a>
-      <a href="#decisions">Design decisions</a>
-      <a href="#prototype">Prototype</a>
-      <a href="#uikit">UI kit</a>
-      <a href="#final">Final designs</a>
-      <a href="#outcome">Outcome</a>
-      <a href="#metrics">Metrics</a>
-    </nav>
-
-    <div>
-      <!-- 01 -->
-      <section id="problem">
-        <p class="kicker">01 — Design problem</p>
-        <h2>A sale counter in someone else’s shop</h2>
-        <div class="prose">
-          <p>Commuters in South East Queensland can buy and top up a go card at hundreds of newsagents, convenience stores and other shops. Translink lists over 680 places to buy a card and over 1,600 places to top one up. Cubic Transportation Systems operates and maintains the go card system. At the counter, the transaction happens on a retailer device, run by a shop clerk whose main job is not transport ticketing.</p>
-          <p>The app had to make a fare transaction quick and hard to get wrong for that clerk. It also had to cover everything around the sale: who is allowed to log in, which device belongs to which shop, how a shift is opened and closed, and how money is reconciled and refunded.</p>
-        </div>
-        <div class="grid2">
-          <div class="card">
-            <h3>What the app has to do</h3>
-            <ul class="clean">
-              <li>Read a go card and show its balance, passes and last transaction.</li>
-              <li>Add value or a pass to an existing card, or issue a new card with its deposit and issuance fee.</li>
-              <li>Take cash or credit/debit, then write the purchase onto the card.</li>
-              <li>Refund the last transaction or a ticket, and print receipts.</li>
-              <li>Run shifts, daily and monthly reports, staff accounts and device registration.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Why that is hard</h3>
-            <ul class="clean">
-              <li>Payment and loading the card are two separate steps. If the card is not loaded after payment, the customer has paid for nothing.</li>
-              <li>Three roles share one device and need different permissions.</li>
-              <li>Security events such as a deactivated device, a suspended account or a forced PIN reset have to be clear to a clerk without help.</li>
-              <li>Clerks change often, so the app has to teach itself: there is a full in-app training mode.</li>
-            </ul>
-          </div>
-        </div>
-                <figure>
-          <button type="button" class="shot" data-caption="The full design board: thirteen frames from Log In to Manage Accounts, shown in two rows.">
-            <img loading="lazy" src="images/board-overview.webp" width="2400" height="804" alt="Overview of the whole Figma board in two rows: frames LO1 to LO4, HO1, UT1, MC1, TA1 to TA4, RE1 and MA1, each a white panel of Android screens joined by pink flow lines, with a Cubic logo footer.">
-          </button>
-          <figcaption><strong>The board at a glance.</strong> Thirteen frames, each with a code and a title, from LO1 Log In to MA1 Manage Accounts.</figcaption>
-        </figure>
-      </section>
-
-      <!-- 02 -->
-      <section id="stakeholders">
-        <p class="kicker">02 — Stakeholders</p>
-        <h2>Who the app answers to</h2>
-        <div class="prose">
-          <p>The screens show who else is involved. Receipts name the Department of Transport and Main Roads. Error dialogs send people to the Cubic Transportation Systems call centre. Annotations refer to a Device Registration API and to an integrated card payment app.</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Stakeholder</th><th>Interest in the app</th><th>Where it shows on the board</th></tr></thead>
-            <tbody>
-              <tr><td>Cubic Transportation Systems</td><td>The client. Delivers and supports the ticketing system, the retailer network and the call centre.</td><td>Cubic footer on every frame. Error dialogs say “contact Cubic Transportation Systems Call Centre”.</td></tr>
-              <tr><td>Translink / Department of Transport and Main Roads (TMR)</td><td>Owns the network, the fare products and the go card brand.</td><td>Translink brand on screens. The receipt header reads “Translink, Department of Transport and Main Roads”.</td></tr>
-              <tr><td>Retail businesses</td><td>Sell go card services next to their own trade. Need reconciliation, reports and staff control.</td><td>Business Information, Register Device, shift and transaction reports.</td></tr>
-              <tr><td>Engineering / API teams</td><td>The device registration, account and payment integrations the UI depends on.</td><td>Yellow notes on API behaviour, such as “As per the Device Registration API…”.</td></tr>
-              <tr><td>Payment provider</td><td>Card payments, either through an integrated payment app or a separate POS device.</td><td>Note on TA1 about the Credit/Debit payment mode being configurable.</td></tr>
-              <tr><td>Commuters</td><td>Do not use the app themselves. They get the outcome: a loaded card and a receipt.</td><td>Receipts, balances and passes.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">I worked with Cubic product, engineering and back-office teams, reviewing flows with them as the designs developed.</p>
-      </section>
-
-      <!-- 03 -->
-      <section id="users">
-        <p class="kicker">03 — End-users</p>
-        <h2>Three roles on one device</h2>
-        <div class="prose">
-          <p>The app has three roles. The Home/Menu frame (HO1) gives each one a different set of tiles. Notes on the board set the boundaries: Register Device is “completed by Admin only”, and for Forgot PIN, “Clerks contact Local Admin for PIN resets.”</p>
-        </div>
-        <div class="table-wrap">
-          <table class="roles">
-            <thead><tr><th>Role</th><th>Home tiles</th><th>What they do</th></tr></thead>
-            <tbody>
-              <tr><td>Admin</td><td>Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Settings, Log Out</td><td>Activates the admin account, registers the device to the business, manages users and settings, resets PINs.</td></tr>
-              <tr><td>Manager</td><td>Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Log Out</td><td>Runs the counter, manages staff accounts and shifts, can reset a clerk’s PIN.</td></tr>
-              <tr><td>Clerk</td><td>Transact, Tickets, Last Transaction, Reports, Shift Reports, Log Out</td><td>Serves customers: sells, tops up, refunds, prints receipts, ends the shift.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figure>
-          <button type="button" class="shot" data-caption="HO1 Home/Menu: role-based home screens and the slide-out menu for Admin, Manager and Clerk.">
-            <img loading="lazy" src="images/ho1-home-menu.webp" width="1363" height="1633" alt="Frame HO1 Home/Menu: three home screens for Admin, Manager and Clerk, each with a different set of tiles, and below them the slide-out menu in its three role versions.">
-          </button>
-          <figcaption><strong>HO1 — Home/Menu.</strong> The same layout for every role, with only the tiles that role is allowed to use.</figcaption>
-        </figure>
-      </section>
-
-      <!-- 04 -->
-      <section id="primary">
-        <p class="kicker">04 — Primary research</p>
-        <h2>Research at the counter</h2>
-        <div class="grid3">
-          <div class="card"><h3>Stakeholder workshops</h3><p>Working sessions with Cubic product, engineering and back-office teams to map the requirements, the three roles, the configuration options and what the APIs could and could not report.</p></div>
-          <div class="card"><h3>Retailer workflow review</h3><p>A review of how a go card sale fits into a shop counter: serving a queue, taking cash or card, handing over a receipt, and reconciling takings at the end of a shift.</p></div>
-          <div class="card"><h3>Prototype walkthroughs</h3><p>Walkthroughs of the wired flows with the Cubic teams, screen by screen, including the error and alternate paths, to check the logic before build.</p></div>
-        </div>
-        <div class="grid2" style="margin-top:14px">
-          <div class="card">
-            <h3>Questions the screens had to answer</h3>
-            <ul class="clean">
-              <li>What happens at the counter when a payment succeeds but the card cannot be loaded?</li>
-              <li>How do clerks reconcile cash and card takings at the end of a shift?</li>
-              <li>Who resets a forgotten PIN, and what does a clerk do when nobody senior is there?</li>
-              <li>How does a new clerk learn the app without formal training?</li>
-              <li>When do refunds happen, and how are they recorded?</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Insights from the flows and workflows</h3>
-            <ul class="clean">
-              <li><b>Payment and loading are separate steps.</b> The point between them carries the most risk, so it needs an explicit way to recover.</li>
-              <li><b>Authority sits with a few people.</b> PIN resets, device registration and account changes belong to admins and managers. Clerks need clear messages that tell them who to ask.</li>
-              <li><b>The shift is the unit of accounting.</b> Clerks need totals by transaction type and by payment type that they can check against the till.</li>
-              <li><b>Staff change often.</b> Help has to live inside the app, not in a manual.</li>
-              <li><b>Errors are limited by what the API returns.</b> Error messages have to be honest about what the system actually knows.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 05 -->
-      <section id="secondary">
-        <p class="kicker">05 — Secondary research</p>
-        <h2>What is public about the go card retail channel</h2>
-        <div class="prose">
-          <p>Public sources describe the network the app sits in. All of these were checked against the source pages listed below.</p>
-        </div>
-        <div class="grid2">
-          <div class="card">
-            <h3>The network</h3>
-            <ul class="clean">
-              <li>Translink states that its go card system “is operated and maintained by Cubic Transportation Systems.” <span class="src">[1]</span></li>
-              <li>A go card can be bought at over 680 locations and topped up at over 1,600 across South East Queensland, including selected retailers. <span class="src">[2]</span></li>
-              <li>At retailers, “card types accepted are at the discretion of the retailer.” Buying a card carries a refundable deposit of $10 (adult) or $5 (child, concession, senior). <span class="src">[2]</span></li>
-              <li>Retailer listings show the services each outlet offers. The 7-Eleven outlets checked list Buy go card, Top up go card and Change expiry date. <span class="src">[3]</span> Queensland Government open data publishes the full go card retailer list. <span class="src">[4]</span></li>
-              <li>Retailers that only sell pre-loaded cards are not given top-up facilities. Retailer applications go to a Cubic address. <span class="src">[5]</span></li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>The history and what is changing</h3>
-            <ul class="clean">
-              <li>Cubic’s 2014 release says the go card system went live in 2008, with Cubic as integrator and supplier. Its NextLink technology let retailers connect their own point-of-sale equipment to Cubic’s central system, so up to 50 more 7-Eleven stores could join. <span class="src">[6]</span></li>
-              <li>Cubic won an AU$371 million Smart Ticketing contract in 2018, covering account-based ticketing and open-loop payments. <span class="src">[7]</span></li>
-              <li>Contactless Visa and Mastercard payment now works on all SEQ trains, trams, ferries and buses. <span class="src">[8]</span></li>
-              <li>The Queensland Government says customers can keep using go cards until a new reloadable card is developed. It also says go card and Smart Ticketing will run side by side until the end of 2027. <span class="src">[9]</span> <span class="src">[10]</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="rationale"><strong>Why it matters for the design.</strong> The counter will keep serving people who use a card rather than a phone or bank card: tourists buying a pass, children and concession holders, and people paying cash. That is why the app is built around reading a card, cash and card payment, passes, and printed receipts.</div>
-              </section>
-
-      <!-- 06 -->
-      <section id="competitive">
-        <p class="kicker">06 — Competitive analysis</p>
-        <h2>How other networks sell through shops</h2>
-        <div class="prose">
-          <p>Retailer terminal screens are not public, so this comparison is about the service each network offers through shops, taken from public pages. Rider apps such as Citymapper or Transit plan journeys for commuters. They are not tools for a clerk, so they are left out.</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Network</th><th>Retail channel</th><th>What a shop can do</th><th>Notable detail</th></tr></thead>
-            <tbody>
-              <tr><td>Translink go card (SEQ)</td><td>Selected retailers, Queensland Rail ticket offices, fare machines <span class="src">[2]</span></td><td>Buy, top up, change expiry date <span class="src">[3]</span></td><td>Card types accepted are up to the retailer. Retailers that only sell pre-loaded cards have no top-up. <span class="src">[2][5]</span></td></tr>
-              <tr><td>Opal (NSW)</td><td>Opal retailers, including convenience stores and newsagents <span class="src">[11]</span></td><td>The retailer finder filters by Top up, New card and Single trip <span class="src">[12]</span></td><td>Online top-ups take 15 to 60 minutes. For immediate travel, NSW advises topping up at a retailer or machine. Some retailers may set minimum transaction values or fees. <span class="src">[11]</span></td></tr>
-              <tr><td>myki (Victoria)</td><td>Hundreds of shops, including all 7-Elevens within the myki boundary <span class="src">[13]</span></td><td>Buy and top up <span class="src">[13]</span></td><td>Customers are told to look for the official myki sign and myki-branded equipment. <span class="src">[13]</span></td></tr>
-              <tr><td>Oyster (London)</td><td>Oyster Ticket Stops in many newsagents <span class="src">[14]</span></td><td>Buy a card, top up pay as you go <span class="src">[14]</span></td><td>Shops sit alongside stations, machines, an app and online top-up. <span class="src">[14]</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="grid2">
-          <div class="card">
-            <h3>Patterns worth keeping</h3>
-            <ul class="clean">
-              <li>A top-up at the counter works straight away. That is the reason to go to a shop instead of topping up online.</li>
-              <li>Retailers offer different service sets, so the app has to show only what this outlet and this role can do.</li>
-              <li>Official branded equipment is how customers know a shop is genuine, so the device has to look like Translink.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Where Translink Merchant goes further</h3>
-            <ul class="clean">
-              <li>A guided way to recover when payment is taken but the card is not yet loaded.</li>
-              <li>Different permissions for Admin, Manager and Clerk on the same device.</li>
-              <li>Training built into every key screen.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 07 -->
-      <section id="personas">
-        <p class="kicker">07 — User personas</p>
-        <h2>The admin, the manager, the clerk</h2>
-        <p class="note">These are proto-personas, built from the role rules and permissions in the screens.</p>
-        <div class="grid3" style="margin-top:12px">
-          <div class="persona">
-            <p class="who">Admin · Store owner</p>
-            <h3>Admin proto-persona</h3>
-            <p>Owns a newsagent that also sells go cards. Sets the device up once, adds staff, and handles anything that needs authority.</p>
-            <ul class="clean">
-              <li><b>Goals:</b> register the device to the right business and address, control who can transact, see daily and monthly takings.</li>
-              <li><b>Frustrations:</b> being called in for every forgotten PIN, and a locked device when the shop is busy.</li>
-              <li><b>Flows:</b> LO2, LO3, MA1, RE1.</li>
-            </ul>
-          </div>
-          <div class="persona">
-            <p class="who">Manager · Shift lead</p>
-            <h3>Manager proto-persona</h3>
-            <p>Runs the counter and the roster. Covers when clerks are stuck and makes sure takings match at the end of the day.</p>
-            <ul class="clean">
-              <li><b>Goals:</b> reset a clerk’s PIN, suspend or end shifts, check refunds.</li>
-              <li><b>Frustrations:</b> shift totals that don’t match the till, and refunds that are hard to trace.</li>
-              <li><b>Flows:</b> LO4, MA1, MC1, RE1.</li>
-            </ul>
-          </div>
-          <div class="persona">
-            <p class="who">Clerk · Counter staff</p>
-            <h3>Clerk proto-persona</h3>
-            <p>Often casual or new, and serving a queue. Sells newspapers and snacks too. Ticketing is a small part of the job.</p>
-            <ul class="clean">
-              <li><b>Goals:</b> top up or sell a pass in seconds, take cash or card, print a receipt, end the shift cleanly.</li>
-              <li><b>Frustrations:</b> unclear errors, and not knowing whether the card was actually loaded.</li>
-              <li><b>Flows:</b> TA1–TA4, MC1, LO4, UT1.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 08 -->
-      <section id="decisions">
-        <p class="kicker">08 — Design decisions</p>
-        <h2>Decisions that are visible in the screens</h2>
-        <ol class="flow" style="grid-template-columns:repeat(2,1fr)">
-          <li><span class="n">1</span><strong>Card first, then cart</strong><span>Every sale starts with Transact → Read card. Manage Card then shows the balance, passes and last transaction before the clerk chooses Top Up or Add Pass. Items go into a cart, so one sale can hold several products.</span></li>
-          <li><span class="n">2</span><strong>One home grid, filtered by role</strong><span>Admin, Manager and Clerk all see the same tile layout and slide-out menu, with only the tiles their role allows. Training one role prepares people for the others.</span></li>
-          <li><span class="n">3</span><strong>Never take money without loading the card</strong><span>After payment, the clerk is sent to Load Card. Cancelling there opens a choice: “Refund” cancels the transaction and starts a refund, “Dismiss” goes back to loading.</span></li>
-          <li><span class="n">4</span><strong>A cash check step</strong><span>For cash, a Confirm Payment screen asks the clerk to verify they have collected the money before the card is loaded. A note says this screen appears only when the payment method is cash.</span></li>
-          <li><span class="n">5</span><strong>Configurable payment and limits</strong><span>Notes record that credit/debit can use an integrated payment app or an external POS device, and that the minimum and maximum top-up amounts are configurable. An inline error shows the allowed range.</span></li>
-          <li><span class="n">6</span><strong>Errors that match the API</strong><span>The API reports a wrong customer ID, but it does not say whether the User ID or the PIN is wrong. So the design shows a single “Incorrect User ID or PIN” and highlights both fields.</span></li>
-          <li><span class="n">7</span><strong>Refunds read as negative</strong><span>History and reports show refunds with a minus sign. The board explains this as the standard convention: a refund lowers the merchant’s takings, for example −$50.</span></li>
-          <li><span class="n">8</span><strong>Plain security states</strong><span>Separate full-screen dialogs for Device Deactivated, Account Not Active, PIN Reset Required and Auto-Logout. Each says what happened and who to contact.</span></li>
-          <li><span class="n">9</span><strong>Shifts with a paper trail</strong><span>End Shift prints a report with totals by transaction type and by payment type. Suspend Shift lets a clerk step away without closing the day.</span></li>
-          <li><span class="n">10</span><strong>Training built in</strong><span>UT1 pairs every key screen with a Training overlay that explains it. New staff learn on the real interface.</span></li>
-        </ol>
-        <figure>
-          <button type="button" class="shot" data-caption="TA3, payment and load detail: the Credit/Debit path, Load Card with the Cancel Transaction dialog (Refund or Dismiss), the cash Confirm Payment screen, Transaction Complete and receipts.">
-            <img loading="lazy" src="images/flow-new-card-payment-detail.webp" width="1362" height="1341" alt="Detail of flow TA3: Load Card with a Cancel Transaction dialog offering Refund or Dismiss, the Confirm Payment screen for cash asking the clerk to verify payment, Transaction Complete with Skip Receipt and Print Receipt, and two printed tax invoice receipts for credit/debit and cash.">
-          </button>
-          <figcaption><strong>Decisions 3 and 4 in the flow.</strong> Load Card cannot be dismissed without a choice, and a cash sale gets its own confirmation screen.</figcaption>
-        </figure>
-        <figure>
-          <button type="button" class="shot" data-caption="LO3 Register Device detail, with notes on the Device Registration API and the combined User ID or PIN error.">
-            <img loading="lazy" src="images/flow-register-device-detail.webp" width="1560" height="1000" alt="Register Device flow: log-in, step 1 asking for Retailer ID, User ID and PIN, step 2 to select the organisation and physical address, Success confirmation, then the Admin home. Below are error states for an incorrect Retailer ID and an incorrect User ID or PIN, with yellow notes about the API.">
-          </button>
-          <figcaption><strong>Decision 6 in the flow.</strong> Annotations on the board explain each error state from what the API returns.</figcaption>
-        </figure>
-              </section>
-
-      <!-- 09 -->
-      <section id="prototype">
-        <p class="kicker">09 — Prototype</p>
-        <h2>Wired flows, end to end</h2>
-        <div class="prose">
-          <p>Every frame on the board is laid out as a connected flow. Pink hotspots mark the tap on each screen, and arrows lead to the next screen, including the branches for errors and alternate paths. TA1 shows the whole sale from the home screen to the receipt, with separate cash and credit/debit paths.</p>
-        </div>
-        <figure>
-          <button type="button" class="shot" data-caption="TA1 Transact, Add Value to Existing Card: wired flow with tap hotspots.">
-            <img loading="lazy" src="images/flow-existing-card-detail.webp" width="1400" height="700" alt="Start of flow TA1: Admin home, Read Card, Manage Card showing a $5.00 balance and passes, Top Up with a keypad and $10 to $40 quick amounts, Cart, Checkout with Cash and Credit/Debit buttons, and Confirm Payment. Pink dots mark each tap and arrows link the screens.">
-          </button>
-          <figcaption><strong>TA1, first half.</strong> Home → Read Card → Manage Card → Top Up → Cart → Checkout → Confirm Payment. The yellow note reads “Minimum amount, maximum amount are configurable.”</figcaption>
-        </figure>
-        <div class="card">
-          <h3>How the prototype was used</h3>
-          <p>The wired flows were walked through with the Cubic teams, path by path, including error and alternate branches. Task scenarios such as “top up an existing card with cash” or “sell a new card with a pass” were stepped through end to end to check the logic and the wording before build.</p>
-        </div>
-      </section>
-
-      <!-- 10 -->
-      <section id="uikit">
-        <p class="kicker">10 — UI kit</p>
-        <h2>The parts the flows are built from</h2>
-        <div class="prose">
-          <p>The board has no separate component page. This kit is put together from the components the flows repeat. Colours were sampled from the screens.</p>
-        </div>
-        <div class="swatches">
-          <div class="swatch"><i style="background:#242b4c"></i><span><b>Navy</b><br><code>#242B4C</code> · headers, tiles, primary buttons</span></div>
-          <div class="swatch"><i style="background:#ef60a3"></i><span><b>Translink pink</b><br><code>#EF60A3</code> · log-in action, brand mark</span></div>
-          <div class="swatch"><i style="background:#ffffff;border-bottom:1px solid #e4e8f0"></i><span><b>White</b><br><code>#FFFFFF</code> · cards, secondary tiles</span></div>
-          <div class="swatch"><i style="background:#e8eaef"></i><span><b>Light grey</b><br>dialog headers, page background (approximate)</span></div>
-        </div>
-        <p class="note">Type, spacing and component sizes follow Android conventions for a handheld device. One-handed use and large touch targets set the tile and button sizes.</p>
-        <div class="kit">
-          <figure><button type="button" class="shot" data-caption="Home tiles: large primary tiles for Transact and Tickets, medium navy tiles, and outlined secondary tiles."><img loading="lazy" src="images/kit-home-tiles.webp" width="270" height="450" alt="Admin home screen showing the tile system: large navy Transact and Tickets tiles, medium navy Last Transaction and Reports tiles, and white outlined tiles for Manage Accounts, Manage Shifts, Settings and Log Out."></button><figcaption><strong>Tiles.</strong> Three sizes, in order of how often they are used.</figcaption></figure>
-          <figure><button type="button" class="shot" data-caption="Shift report receipt: summary by transaction type and by payment type."><img loading="lazy" src="images/kit-shift-report-receipt.webp" width="260" height="660" alt="Printed shift report with retailer address, device and user IDs, start and end time, a summary by transaction type with counts and takings, and a summary by payment type including negative refund rows."></button><figcaption><strong>Printed receipt.</strong> A shared layout for shift reports and sale receipts. The figures are sample data.</figcaption></figure>
-          <figure><button type="button" class="shot" data-caption="Dialogs: Device Deactivated, Account Not Active, PIN Reset Required, Auto-Logout."><img loading="lazy" src="images/kit-dialogs.webp" width="1010" height="400" alt="Four modal dialogs with grey title bars, a large icon, a message and a navy OK button: Device Deactivated, Account Not Active, PIN Reset Required and Auto-Logout."></button><figcaption><strong>Dialogs.</strong> Title, icon, one plain sentence and a single action.</figcaption></figure>
-          <figure><button type="button" class="shot" data-caption="Slide-out menu for Admin, Manager and Clerk."><img loading="lazy" src="images/kit-slideout-menu.webp" width="1120" height="460" alt="The Read Card screen and the slide-out navigation menu in Admin, Manager and Clerk versions, with icon and chevron rows."></button><figcaption><strong>Navigation.</strong> The slide-out menu repeats the home tiles for each role.</figcaption></figure>
-          <figure><button type="button" class="shot" data-caption="Balances and passes card states: positive and negative balance, single pass and multiple consecutive passes."><img loading="lazy" src="images/kit-balances-passes.webp" width="340" height="180" alt="Component states for card balance and passes: positive balance, negative balance, one pass, and multiple consecutive passes."></button><figcaption><strong>Card status.</strong> States for positive and negative balances and for one or several passes.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 11 -->
-      <section id="final">
-        <p class="kicker">11 — Final designs</p>
-        <h2>Thirteen flows</h2>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Code</th><th>Flow</th><th>What it covers</th></tr></thead>
-            <tbody>
-              <tr><td>LO1</td><td>Log In</td><td>Splash, 6-digit User ID and PIN with a numeric keypad, role-based landing. Errors for out of service, incorrect entry and empty fields, plus dialogs for device and account states. Connection errors for the internet and the back office.</td></tr>
-              <tr><td>LO2</td><td>Login › Forgot PIN</td><td>Admin only: password recovery, a security question, a verification code, a new PIN. Error states for a wrong answer, a wrong code and a PIN mismatch.</td></tr>
-              <tr><td>LO3</td><td>Login › Register Device</td><td>Admin only: Retailer ID, User ID and PIN, then business and physical address, then success. Also Activate Admin Account.</td></tr>
-              <tr><td>LO4</td><td>Log Out / End Shift</td><td>Log out per role, end shift with a printed shift report, suspend shift, auto log-out.</td></tr>
-              <tr><td>HO1</td><td>Home/Menu</td><td>Home screens for Admin, Manager and Clerk, and the slide-out menu.</td></tr>
-              <tr><td>UT1</td><td>In-App User Training</td><td>A Training overlay for every key screen, from Log In to New User Account.</td></tr>
-              <tr><td>MC1</td><td>Manage Card</td><td>Balances and passes, print card details, history (transactions and journeys, existing and new design), refund the last transaction, transactions with several products, error screens.</td></tr>
-              <tr><td>TA1</td><td>Transact › Add Value to Existing Card</td><td>Top up with cash or credit/debit, load card, receipt.</td></tr>
-              <tr><td>TA2</td><td>Transact › Add Pass to Existing Translink Card</td><td>Pick a pass (for example go explore), cart, cash or credit/debit.</td></tr>
-              <tr><td>TA3</td><td>Transact › Add Value to New Card</td><td>New card with issuance fee and deposit, top up, payment, load card, receipts, error screens.</td></tr>
-              <tr><td>TA4</td><td>Transact › Add Pass to New Card</td><td>A new card with a pass, error screens.</td></tr>
-              <tr><td>RE1</td><td>Reports › Transaction Reports</td><td>Daily and monthly reports with a date picker for Admin and Manager, a Clerk version, alternate screens and printed reports.</td></tr>
-              <tr><td>MA1</td><td>Manage Accounts</td><td>Search users, edit details, change PIN, add a new user, delete, suspend, reactivate and unlock accounts.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <h3 style="margin-top:28px">Getting in</h3>
-        <figure><button type="button" class="shot" data-caption="LO1 Log In, including errors and connection errors."><img loading="lazy" src="images/lo1-log-in.webp" width="2000" height="2597" alt="Frame LO1 Log In: splash, empty and filled log-in, a loading state, and the Admin, Manager and Clerk homes. Below are error screens for out of service, incorrect entry and empty fields, dialogs for device deactivated, account suspended, PIN reset and auto-logout, and internet and back-office connection errors."></button><figcaption><strong>LO1 — Log In.</strong> Includes every error and connection state.</figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="LO2 Login, Forgot PIN: completed by Admin only."><img loading="lazy" src="images/lo2-forgot-pin.webp" width="2000" height="2014" alt="Frame LO2 Forgot PIN: password recovery, security question, verification code and reset PIN screens, an alternate path, and error states for a wrong answer, a wrong verification code and a PIN mismatch."></button><figcaption><strong>LO2 — Forgot PIN.</strong> “Completed by Admin only. Clerks contact Local Admin for PIN resets.”</figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="LO3 Login, Register Device and Activate Admin Account."><img loading="lazy" src="images/lo3-register-device.webp" width="2000" height="2311" alt="Frame LO3: the Register Device flow with error states and API notes, and the Activate Admin Account flow with an invalid-information error."></button><figcaption><strong>LO3 — Register Device and Activate Admin Account.</strong></figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="LO4 Log Out / End Shift: log out, end shift with a printed report, suspend shift, auto log-out."><img loading="lazy" src="images/lo4-log-out-end-shift.webp" width="2000" height="2032" alt="Frame LO4: log-out options per role, End Shift confirmation and shift-ended screen with a printed shift report, Suspend Shift, and Auto Log Out."></button><figcaption><strong>LO4 — Log Out / End Shift.</strong></figcaption></figure>
-        <h3 style="margin-top:28px">Selling</h3>
-        <figure><button type="button" class="shot" data-caption="TA1 Add Value to Existing Card."><img loading="lazy" src="images/ta1-add-value-existing-card.webp" width="2000" height="1949" alt="Frame TA1: cash payment and credit/debit payment flows for topping up an existing card, with load card, error dialogs and receipts."></button><figcaption><strong>TA1 — Add Value to Existing Card.</strong> Cash and credit/debit paths. A note explains the two credit/debit modes: an integrated payment app or an external POS device.</figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="TA2 Add Pass to Existing Translink Card."><img loading="lazy" src="images/ta2-add-pass-existing-card.webp" width="2000" height="1796" alt="Frame TA2: choose a pass, cart, checkout, then cash and credit/debit payment paths with error states and receipts."></button><figcaption><strong>TA2 — Add Pass to Existing Card.</strong></figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="TA3 Add Value to New Card."><img loading="lazy" src="images/ta3-add-value-new-card.webp" width="2000" height="1008" alt="Frame TA3: a new card with no value, top up, cart with issuance fee and deposit, checkout, payment, load card, transaction complete and receipts, plus error screens."></button><figcaption><strong>TA3 — Add Value to New Card.</strong> The issuance fee and deposit get their own lines in the cart and on the receipt.</figcaption></figure>
-        <figure><button type="button" class="shot" data-caption="TA4 Add Pass to New Card."><img loading="lazy" src="images/ta4-add-pass-new-card.webp" width="2000" height="887" alt="Frame TA4: add a pass to a new card through to the receipt, with error screens."></button><figcaption><strong>TA4 — Add Pass to New Card.</strong></figcaption></figure>
-        <h3 style="margin-top:28px">Cards, reports and accounts</h3>
-        <div class="grid2">
-          <figure><button type="button" class="shot" data-caption="MC1 Manage Card: balances, passes, print card details, history, refund last transaction."><img loading="lazy" src="images/mc1-manage-card.webp" width="1069" height="2662" alt="Frame MC1: Manage Card states, balances and passes components, Print Card Details, History with the minus-sign convention note, existing versus new journeys history, Refund Last Transaction and error screens."></button><figcaption><strong>MC1 — Manage Card.</strong></figcaption></figure>
-          <figure><button type="button" class="shot" data-caption="MA1 Manage Accounts."><img loading="lazy" src="images/ma1-manage-accounts.webp" width="1569" height="2662" alt="Frame MA1: user list, edit user, change PIN, add new user, and delete, suspend, reactivate and unlock account flows with confirmations."></button><figcaption><strong>MA1 — Manage Accounts.</strong></figcaption></figure>
-        </div>
-        <figure><button type="button" class="shot" data-caption="RE1 Reports, Transaction Reports for Admin/Manager and Clerk."><img loading="lazy" src="images/re1-transaction-reports.webp" width="2000" height="1722" alt="Frame RE1: daily and monthly transaction reports with a calendar date picker for Admin and Manager, the Clerk version, alternate screens and printed reports."></button><figcaption><strong>RE1 — Transaction Reports.</strong></figcaption></figure>
-        <h3 style="margin-top:28px">Learning the app</h3>
-        <figure class="narrow"><button type="button" class="shot" data-caption="UT1 In-App User Training: each screen paired with its Training overlay."><img loading="lazy" src="images/ut1-in-app-training.webp" width="1143" height="2662" alt="Frame UT1: a grid of screen pairs, each showing a real screen next to its Training overlay, from Log In and Home to Sell Ticket, Refund Tickets, Reports, Settings and Manage Accounts."></button><figcaption><strong>UT1 — In-App User Training.</strong> The training screens also list ticket sales by flat fare, zonal and point to point, rider type and ticket printing. These do not have their own flow frame on this board.</figcaption></figure>
-      </section>
-
-      <!-- 12 -->
-      <section id="outcome">
-        <p class="kicker">12 — Outcome</p>
-        <h2>What I delivered</h2>
-        <div class="grid2">
-          <div class="card">
-            <h3>Delivered</h3>
-            <ul class="clean">
-              <li><b>End-to-end designs for 13 flows.</b> Access, home, selling, card management, reporting, accounts and training, each with its error and edge states.</li>
-              <li><b>A role-based experience.</b> One layout for Admin, Manager and Clerk, with permissions applied the same way across the home screen, menu and flows.</li>
-              <li><b>Built-in training.</b> A Training overlay for every key screen, so new staff learn on the real interface.</li>
-              <li><b>An error-recovery model.</b> Refund-or-Dismiss when loading is cancelled, a cash check step, plain security dialogs, and errors written from what the API actually returns.</li>
-              <li><b>A developer-ready specification.</b> Notes on API behaviour and configuration sit next to the screens they affect.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>What I learned</h3>
-            <ul class="clean">
-              <li>On a shared counter device, errors are designed from what the API can actually report, not from the ideal message.</li>
-              <li>The riskiest moment is between payment and loading the card, so that step gets the most protection.</li>
-              <li>A tile grid filtered by role is easier to train and support than separate apps for each role.</li>
-              <li>Built-in training does work a manual would otherwise have to do for staff who change often.</li>
-              <li>Annotating API limits on the board saves rework later, because developers and designers read the same source.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 13 -->
-      <section id="metrics">
-        <p class="kicker">13 — Metrics</p>
-        <h2>Success metrics &amp; targets</h2>
-        <div class="prose"><p>These are the design goals and targets the work was aimed at, and what we would measure to check them. They are targets, not measured results.</p></div>
-        <div class="stats">
-          <div class="stat"><b>&lt; 30 s</b><span>Target: a top-up completed from card read to receipt</span></div>
-          <div class="stat"><b>90%+</b><span>Target: first-try task success for core sales tasks</span></div>
-          <div class="stat"><b>Zero</b><span>Goal: no “paid but not loaded” cards, through the Refund-or-Dismiss recovery flow</span></div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>What we would measure</th><th>Why it matters</th><th>Target / goal</th></tr></thead>
-            <tbody>
-              <tr><td>Time per top-up transaction</td><td>Queue pressure at the counter</td><td>Target: under 30 seconds from card read to receipt</td></tr>
-              <tr><td>First-try task success</td><td>Clerks get it right without help</td><td>Target: 90%+ on core sales tasks</td></tr>
-              <tr><td>Payment taken but card not loaded</td><td>The costliest error for the customer</td><td>Goal: zero, by always routing through Refund or Dismiss</td></tr>
-              <tr><td>Clerk onboarding</td><td>Effect of in-app training</td><td>Goal: a new clerk productive after a single in-app training session</td></tr>
-              <tr><td>Retailer support calls about PINs, devices and errors</td><td>Support load on the Cubic call centre</td><td>Goal: fewer calls, through self-explaining dialogs and role-based PIN resets</td></tr>
-              <tr><td>Shift reconciliation</td><td>Trust in the shift report</td><td>Goal: shift report totals match the till without manual rework</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">Targets are design goals for the experience. They are not reported production results.</p>
-        <h3 style="margin-top:28px">Sources</h3>
-        <ol class="sources">
-          <li><a href="https://translink.com.au/about-translink/who-we-are/who-we-work-with">Translink — Who we work with</a></li>
-          <li><a href="https://translink.com.au/tickets-and-fares/go-card/buy-and-top-up">Translink — Buy and top-up go card</a></li>
-          <li><a href="https://translink.com.au/tickets-and-fares/go-card/locations/18/details">Translink — 7-Eleven Edward Street Brisbane (retailer listing)</a></li>
-          <li><a href="https://www.data.qld.gov.au/dataset/go-card-retailers">Queensland Government Open Data — go card retailers</a></li>
-          <li><a href="https://translink.com.au/about-translink/business-and-partnership-opportunities">Translink — Business and partnership opportunities</a></li>
-          <li><a href="https://www.cubic.com/news-events/news/cubic-technology-adds-more-go-card-sales-outlets-brisbane-commuters">Cubic — Cubic Technology Adds More go card Sales Outlets for Brisbane Commuters (17 Sept 2014)</a></li>
-          <li><a href="https://www.mobility-payments.com/2025/09/11/queensland-government-pulls-regional-bus-operators-out-of-smart-ticketing-fare-project-a-loss-for-cubic/">Mobility Payments — Queensland Government pulls regional bus operators out of Smart Ticketing (Sept 2025)</a></li>
-          <li><a href="https://translink.com.au/about-translink/projects-and-initiatives/smart-ticketing">Translink — Smart Ticketing</a></li>
-          <li><a href="https://statements.qld.gov.au/statements/102232">Queensland Ministerial Media Statement — Smart Ticketing delivered across South East Queensland</a></li>
-          <li><a href="https://statements.qld.gov.au/statements/101860">Queensland Ministerial Media Statement — Smart Ticketing delays and budget</a></li>
-          <li><a href="https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card">Transport for NSW — Top up your Opal card</a></li>
-          <li><a href="https://transportnsw.info/tickets-fares/opal/opal-retailers">Transport for NSW — Opal retailers</a></li>
-          <li><a href="https://www.ptv.vic.gov.au/tickets/myki/buy-a-myki-and-top-up/where-to-buy-and-top-up">PTV — myki: where to buy and top up</a></li>
-          <li><a href="https://tfl.gov.uk/fares/ways-to-pay/where-to-buy-tickets-and-oyster">Transport for London — Where to buy tickets and Oyster</a></li>
-        </ol>
-        <p class="note">Sources checked on 30 October 2026.</p>
-      </section>
+<main>
+<section class="cs-section" id="role"><div class="wrap">
+  <div class="head"><div class="num">01</div><div><h2>My Role</h2><p>Suvarna Myneni, AI-Native UX Designer, owned UX/UI design: end-to-end flows, prototyping and the UI kit, with Cubic product, engineering and back-office teams.</p></div></div>
+  <div class="body">
+    <p>Translink Merchant is a retailer point-of-sale app. Cubic Transportation Systems runs the go card system for Translink. Managers and admins use the same handheld as clerks, to run staff accounts and the device itself. Every screen on this page is cropped from the design board. Public facts link to their sources in Research.</p>
+    <div class="grid g3">
+      <div class="card"><h3>End-to-end flows</h3><p>Thirteen flows from log-in to manage accounts, each with its error and edge states: access, home, selling, card management, reporting, accounts and training.</p></div>
+      <div class="card"><h3>Prototyping</h3><p>Wired flows with tap hotspots and branches for cash, credit/debit and errors, walked through with the Cubic teams before build.</p></div>
+      <div class="card"><h3>UI kit</h3><p>Tiles, dialogs, printed receipts, the slide-out menu and card-status states, assembled from the components the flows repeat.</p></div>
+      <div class="card"><h3>Role-based experience</h3><p>One layout for Admin, Manager and Clerk, with permissions applied the same way on the home screen, the menu and the flows.</p></div>
+      <div class="card"><h3>Error recovery</h3><p>Refund-or-Dismiss when loading is cancelled, a cash check step, plain security dialogs, and errors written from what the API returns.</p></div>
+      <div class="card"><h3>Developer notes</h3><p>A specification with notes on API behaviour and configuration sitting next to the screens they affect.</p></div>
     </div>
   </div>
+</div></section>
 
-  <footer>
-    <div class="wrap">
-      Suvarna Myneni · AI-Native UX Designer · Hyderabad ·
-      <a href="https://suvarnamyneni-project.github.io">Portfolio</a> ·
-      <a href="mailto:suvarnamyneni@gmail.com">suvarnamyneni@gmail.com</a>
-      <p class="note">Case study of the Translink Merchant app, designed by Suvarna Myneni for Cubic Transportation Systems. Screens are from the project design board. Receipt and report figures in the screens are sample data. Translink, go card and Cubic are trademarks of their owners. This is not an official Cubic or Translink page.</p>
+<section class="cs-section" id="design"><div class="wrap">
+  <div class="head"><div class="num">02</div><div><h2>Design Process</h2><p>End-to-end, from discovery to delivery.</p></div></div>
+  <div class="body"><div class="process">
+    <div class="step"><b>Discover</b><span>Workshops with Cubic product, engineering and back office. A review of the counter: queue, cash or card, receipt, end-of-shift takings. Public sources on the go card retailer network.</span></div>
+    <div class="step"><b>Define</b><span>A fare sale has to be quick and hard to get wrong for a clerk whose main job is not ticketing. Three roles share one device. Payment and loading the card are two steps.</span></div>
+    <div class="step"><b>Ideate</b><span>One home grid filtered by role. A cash confirmation. Refund or Dismiss if loading is cancelled. Errors that match the API. Training on the real screens.</span></div>
+    <div class="step"><b>Prototype</b><span>Thirteen connected frames in Figma, from LO1 Log In to MA1 Manage Accounts, with pink hotspots and arrows through the error and alternate paths.</span></div>
+    <div class="step"><b>Test &amp; Deliver</b><span>Path-by-path walkthroughs with Cubic teams, including “top up an existing card with cash” and “sell a new card with a pass”, then notes for engineering on the board.</span></div>
+  </div></div>
+</div></section>
+
+<section class="cs-section" id="problem"><div class="wrap">
+  <div class="head"><div class="num">03</div><div><h2>Problem</h2><p>A sale counter in someone else’s shop.</p></div></div>
+  <div class="body">
+    <p class="callout">The app had to make a fare transaction quick and hard to get wrong for a shop clerk, and it also had to cover who may log in, which device belongs to which shop, how a shift opens and closes, and how money is reconciled and refunded.</p>
+    <p>Commuters in South East Queensland can buy and top up a go card at hundreds of newsagents, convenience stores and other shops. Translink lists over 680 places to buy a card and over 1,600 places to top one up. Cubic Transportation Systems operates and maintains the go card system. At the counter, the transaction happens on a retailer device, run by a shop clerk whose main job is not transport ticketing.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>What the app has to do</h3>
+        <ul>
+          <li>Read a go card and show its balance, passes and last transaction.</li>
+          <li>Add value or a pass to an existing card, or issue a new card with its deposit and issuance fee.</li>
+          <li>Take cash or credit/debit, then write the purchase onto the card.</li>
+          <li>Refund the last transaction or a ticket, and print receipts.</li>
+          <li>Run shifts, daily and monthly reports, staff accounts and device registration.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Why that is hard</h3>
+        <ul>
+          <li>Payment and loading the card are two separate steps. If the card is not loaded after payment, the customer has paid for nothing.</li>
+          <li>Three roles share one device and need different permissions.</li>
+          <li>Security events such as a deactivated device, a suspended account or a forced PIN reset have to be clear to a clerk without help.</li>
+          <li>Clerks change often, so the app has to teach itself: there is a full in-app training mode.</li>
+        </ul>
+      </div>
     </div>
-  </footer>
+    <figure class="figure">
+      <img loading="lazy" src="images/board-overview.webp" width="2400" height="804" alt="Overview of the whole Figma board in two rows: frames LO1 to LO4, HO1, UT1, MC1, TA1 to TA4, RE1 and MA1, each a white panel of Android screens joined by pink flow lines, with a Cubic logo footer.">
+      <figcaption><strong>The board at a glance.</strong> Thirteen frames, each with a code and a title, from LO1 Log In to MA1 Manage Accounts.</figcaption>
+    </figure>
+  </div>
+</div></section>
 
-  <dialog class="lightbox" id="lightbox" aria-label="Enlarged figure">
-    <button type="button" class="close">Close</button>
-    <img id="lightbox-img" alt="">
-    <p id="lightbox-cap"></p>
-  </dialog>
-  <script src="js/main.js"></script>
+<section class="cs-section" id="stakeholders"><div class="wrap">
+  <div class="head"><div class="num">04</div><div><h2>Stakeholders</h2><p>Who the app answers to. Receipts name the Department of Transport and Main Roads. Error dialogs send people to the Cubic call centre. Annotations refer to a Device Registration API and to an integrated card payment app.</p></div></div>
+  <div class="body">
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Stakeholder</th><th>What they need</th><th>How I worked with them</th></tr></thead>
+        <tbody>
+          <tr><td>Cubic Transportation Systems</td><td>The client. Delivers and supports the ticketing system, the retailer network and the call centre.</td><td>Reviewed flows with Cubic product, engineering and back-office teams as the designs developed. Cubic footer on every frame. Error dialogs say “contact Cubic Transportation Systems Call Centre”.</td></tr>
+          <tr><td>Translink / Department of Transport and Main Roads (TMR)</td><td>Owns the network, the fare products and the go card brand.</td><td>Translink brand on the screens. The receipt header reads “Translink, Department of Transport and Main Roads”. Fare and retailer facts were checked against public Translink pages.</td></tr>
+          <tr><td>Retail businesses</td><td>Sell go card services next to their own trade. Need reconciliation, reports and staff control.</td><td>Reviewed how a sale fits a shop counter. Shows up as Business Information, Register Device, and shift and transaction reports.</td></tr>
+          <tr><td>Engineering / API teams</td><td>The device registration, account and payment integrations the UI depends on.</td><td>Yellow notes on the board record API behaviour next to the screens, such as “As per the Device Registration API…”.</td></tr>
+          <tr><td>Payment provider</td><td>Card payments, either through an integrated payment app or a separate POS device.</td><td>A note on TA1 records that the Credit/Debit payment mode is configurable between those two setups.</td></tr>
+          <tr><td>Commuters</td><td>Do not use the app themselves. They get the outcome: a loaded card and a receipt.</td><td>Balances, passes and receipts are the customer’s proof. The clerk’s flow is shaped around handing those over in a queue.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section class="cs-section" id="users"><div class="wrap">
+  <div class="head"><div class="num">05</div><div><h2>End Users</h2><p>Three roles on one device. The Home/Menu frame (HO1) gives each one a different set of tiles.</p></div></div>
+  <div class="body">
+    <p>Notes on the board set the boundaries: Register Device is “completed by Admin only”, and for Forgot PIN, “Clerks contact Local Admin for PIN resets.”</p>
+    <div class="grid g3">
+      <div class="card"><div class="tag">Admin</div><h3>Store setup and authority</h3><p>Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Settings, Log Out. Activates the admin account, registers the device to the business, manages users and settings, resets PINs.</p></div>
+      <div class="card"><div class="tag">Manager</div><h3>Counter and roster</h3><p>Transact, Tickets, Last Transaction, Reports, Manage Accounts, Manage Shifts, Log Out. Runs the counter, manages staff accounts and shifts, and can reset a clerk’s PIN.</p></div>
+      <div class="card"><div class="tag">Clerk</div><h3>The sale</h3><p>Transact, Tickets, Last Transaction, Reports, Shift Reports, Log Out. Serves customers: sells, tops up, refunds, prints receipts and ends the shift.</p></div>
+    </div>
+    <figure class="figure">
+      <img loading="lazy" src="images/ho1-home-menu.webp" width="1363" height="1633" alt="Frame HO1 Home/Menu: three home screens for Admin, Manager and Clerk, each with a different set of tiles, and below them the slide-out menu in its three role versions.">
+      <figcaption><strong>HO1 — Home/Menu.</strong> The same layout for every role, with only the tiles that role is allowed to use.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="cs-section" id="research"><div class="wrap">
+  <div class="head"><div class="num">06</div><div><h2>Research Methods</h2><p>Workshops and counter workflows with Cubic, then public sources on the go card retail channel. Sources were checked against the pages listed below.</p></div></div>
+  <div class="body">
+    <div class="grid g2">
+      <div class="card"><div class="tag">Workshops</div><h3>Stakeholder workshops</h3><p>Working sessions with Cubic product, engineering and back-office teams to map the requirements, the three roles, the configuration options and what the APIs could and could not report.</p><p>Key insight: authority sits with a few people. PIN resets, device registration and account changes belong to admins and managers. Clerks need messages that tell them who to ask.</p></div>
+      <div class="card"><div class="tag">Workflow</div><h3>Retailer workflow review</h3><p>A review of how a go card sale fits into a shop counter: serving a queue, taking cash or card, handing over a receipt, and reconciling takings at the end of a shift.</p><p>Key insight: the shift is the unit of accounting. Clerks need totals by transaction type and by payment type that they can check against the till.</p></div>
+      <div class="card"><div class="tag">Walkthrough</div><h3>Prototype walkthroughs</h3><p>Walkthroughs of the wired flows with the Cubic teams, screen by screen, including the error and alternate paths, to check the logic before build.</p><p>Key insight: payment and loading are separate steps. The point between them carries the most risk, so it needs an explicit way to recover.</p></div>
+      <div class="card"><div class="tag">Desk research</div><h3>Public sources</h3><p>Translink, Cubic, Queensland Government and peer-network pages describing where go cards are sold, what a shop can do, and how long the card channel is expected to run.</p><p>Key insight: staff change often, and help has to live inside the app. Errors are also limited by what the API returns, so messages have to be honest about what the system knows.</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Questions the screens had to answer</h3>
+        <ul>
+          <li>What happens at the counter when a payment succeeds but the card cannot be loaded?</li>
+          <li>How do clerks reconcile cash and card takings at the end of a shift?</li>
+          <li>Who resets a forgotten PIN, and what does a clerk do when nobody senior is there?</li>
+          <li>How does a new clerk learn the app without formal training?</li>
+          <li>When do refunds happen, and how are they recorded?</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Insights from the flows and workflows</h3>
+        <ul>
+          <li><b>Payment and loading are separate steps.</b> The point between them carries the most risk, so it needs an explicit way to recover.</li>
+          <li><b>Authority sits with a few people.</b> PIN resets, device registration and account changes belong to admins and managers. Clerks need clear messages that tell them who to ask.</li>
+          <li><b>The shift is the unit of accounting.</b> Clerks need totals by transaction type and by payment type that they can check against the till.</li>
+          <li><b>Staff change often.</b> Help has to live inside the app, not in a manual.</li>
+          <li><b>Errors are limited by what the API returns.</b> Error messages have to be honest about what the system actually knows.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>What is public about the go card retail channel</h3>
+    <div class="grid g2">
+      <div class="card">
+        <h3>The network</h3>
+        <ul>
+          <li>Translink states that its go card system “is operated and maintained by Cubic Transportation Systems.” <a href="#src-1">[1]</a></li>
+          <li>A go card can be bought at over 680 locations and topped up at over 1,600 across South East Queensland, including selected retailers. <a href="#src-2">[2]</a></li>
+          <li>At retailers, “card types accepted are at the discretion of the retailer.” Buying a card carries a refundable deposit of $10 (adult) or $5 (child, concession, senior). <a href="#src-2">[2]</a></li>
+          <li>Retailer listings show the services each outlet offers. The 7-Eleven outlets checked list Buy go card, Top up go card and Change expiry date. <a href="#src-3">[3]</a> Queensland Government open data publishes the full go card retailer list. <a href="#src-4">[4]</a></li>
+          <li>Retailers that only sell pre-loaded cards are not given top-up facilities. Retailer applications go to a Cubic address. <a href="#src-5">[5]</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The history and what is changing</h3>
+        <ul>
+          <li>Cubic’s 2014 release says the go card system went live in 2008, with Cubic as integrator and supplier. Its NextLink technology let retailers connect their own point-of-sale equipment to Cubic’s central system, so up to 50 more 7-Eleven stores could join. <a href="#src-6">[6]</a></li>
+          <li>Cubic won an AU$371 million Smart Ticketing contract in 2018, covering account-based ticketing and open-loop payments. <a href="#src-7">[7]</a></li>
+          <li>Contactless Visa and Mastercard payment now works on all SEQ trains, trams, ferries and buses. <a href="#src-8">[8]</a></li>
+          <li>The Queensland Government says customers can keep using go cards until a new reloadable card is developed. It also says go card and Smart Ticketing will run side by side until the end of 2027. <a href="#src-9">[9]</a> <a href="#src-10">[10]</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="callout"><strong>Why it matters for the design.</strong> The counter will keep serving people who use a card rather than a phone or bank card: tourists buying a pass, children and concession holders, and people paying cash. That is why the app is built around reading a card, cash and card payment, passes, and printed receipts.</p>
+    <h3>Sources</h3>
+    <p>Checked on 30 October 2026. Numbers in Competitive Analysis use this list.</p>
+    <ol>
+      <li id="src-1"><a href="https://translink.com.au/about-translink/who-we-are/who-we-work-with">Translink — Who we work with</a></li>
+      <li id="src-2"><a href="https://translink.com.au/tickets-and-fares/go-card/buy-and-top-up">Translink — Buy and top-up go card</a></li>
+      <li id="src-3"><a href="https://translink.com.au/tickets-and-fares/go-card/locations/18/details">Translink — 7-Eleven Edward Street Brisbane (retailer listing)</a></li>
+      <li id="src-4"><a href="https://www.data.qld.gov.au/dataset/go-card-retailers">Queensland Government Open Data — go card retailers</a></li>
+      <li id="src-5"><a href="https://translink.com.au/about-translink/business-and-partnership-opportunities">Translink — Business and partnership opportunities</a></li>
+      <li id="src-6"><a href="https://www.cubic.com/news-events/news/cubic-technology-adds-more-go-card-sales-outlets-brisbane-commuters">Cubic — Cubic Technology Adds More go card Sales Outlets for Brisbane Commuters (17 Sept 2014)</a></li>
+      <li id="src-7"><a href="https://www.mobility-payments.com/2025/09/11/queensland-government-pulls-regional-bus-operators-out-of-smart-ticketing-fare-project-a-loss-for-cubic/">Mobility Payments — Queensland Government pulls regional bus operators out of Smart Ticketing (Sept 2025)</a></li>
+      <li id="src-8"><a href="https://translink.com.au/about-translink/projects-and-initiatives/smart-ticketing">Translink — Smart Ticketing</a></li>
+      <li id="src-9"><a href="https://statements.qld.gov.au/statements/102232">Queensland Ministerial Media Statement — Smart Ticketing delivered across South East Queensland</a></li>
+      <li id="src-10"><a href="https://statements.qld.gov.au/statements/101860">Queensland Ministerial Media Statement — Smart Ticketing delays and budget</a></li>
+      <li id="src-11"><a href="https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card">Transport for NSW — Top up your Opal card</a></li>
+      <li id="src-12"><a href="https://transportnsw.info/tickets-fares/opal/opal-retailers">Transport for NSW — Opal retailers</a></li>
+      <li id="src-13"><a href="https://www.ptv.vic.gov.au/tickets/myki/buy-a-myki-and-top-up/where-to-buy-and-top-up">PTV — myki: where to buy and top up</a></li>
+      <li id="src-14"><a href="https://tfl.gov.uk/fares/ways-to-pay/where-to-buy-tickets-and-oyster">Transport for London — Where to buy tickets and Oyster</a></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="cs-section" id="competitive"><div class="wrap">
+  <div class="head"><div class="num">07</div><div><h2>Competitive Analysis</h2><p>How other networks sell through shops. Retailer terminal screens are not public, so this comparison is the service each network offers through shops, taken from public pages.</p></div></div>
+  <div class="body">
+    <p>Rider apps such as Citymapper or Transit plan journeys for commuters. They are not tools for a clerk, so they are left out. Source numbers point to the list in Research Methods.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Network</th><th>Retail channel</th><th>What a shop can do</th><th>Notable detail</th></tr></thead>
+        <tbody>
+          <tr><td>Translink go card (SEQ)</td><td>Selected retailers, Queensland Rail ticket offices, fare machines <a href="#src-2">[2]</a></td><td>Buy, top up, change expiry date <a href="#src-3">[3]</a></td><td>Card types accepted are up to the retailer. Retailers that only sell pre-loaded cards have no top-up. <a href="#src-2">[2]</a> <a href="#src-5">[5]</a></td></tr>
+          <tr><td>Opal (NSW)</td><td>Opal retailers, including convenience stores and newsagents <a href="#src-11">[11]</a></td><td>The retailer finder filters by Top up, New card and Single trip <a href="#src-12">[12]</a></td><td>Online top-ups take 15 to 60 minutes. For immediate travel, NSW advises topping up at a retailer or machine. Some retailers may set minimum transaction values or fees. <a href="#src-11">[11]</a></td></tr>
+          <tr><td>myki (Victoria)</td><td>Hundreds of shops, including all 7-Elevens within the myki boundary <a href="#src-13">[13]</a></td><td>Buy and top up <a href="#src-13">[13]</a></td><td>Customers are told to look for the official myki sign and myki-branded equipment. <a href="#src-13">[13]</a></td></tr>
+          <tr><td>Oyster (London)</td><td>Oyster Ticket Stops in many newsagents <a href="#src-14">[14]</a></td><td>Buy a card, top up pay as you go <a href="#src-14">[14]</a></td><td>Shops sit alongside stations, machines, an app and online top-up. <a href="#src-14">[14]</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Patterns worth keeping</h3>
+        <ul>
+          <li>A top-up at the counter works straight away. That is the reason to go to a shop instead of topping up online.</li>
+          <li>Retailers offer different service sets, so the app has to show only what this outlet and this role can do.</li>
+          <li>Official branded equipment is how customers know a shop is genuine, so the device has to look like Translink.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Where Translink Merchant goes further</h3>
+        <ul>
+          <li>A guided way to recover when payment is taken but the card is not yet loaded.</li>
+          <li>Different permissions for Admin, Manager and Clerk on the same device.</li>
+          <li>Training built into every key screen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="cs-section" id="personas"><div class="wrap">
+  <div class="head"><div class="num">08</div><div><h2>User Personas</h2><p>Representative proto-personas for the admin, the manager and the clerk. Built from the role rules and permissions in the screens, not from named research participants.</p></div></div>
+  <div class="body"><div class="grid g3">
+    <div class="card persona"><div class="avatar">AD</div><div>
+      <h3>Admin · Store owner</h3>
+      <p>Owns a newsagent that also sells go cards. Sets the device up once, adds staff, and handles anything that needs authority.</p>
+      <p><b>Goals.</b> Register the device to the right business and address, control who can transact, see daily and monthly takings.</p>
+      <p><b>Frustrations.</b> Being called in for every forgotten PIN, and a locked device when the shop is busy.</p>
+      <p><b>Flows.</b> LO2, LO3, MA1, RE1.</p>
+    </div></div>
+    <div class="card persona"><div class="avatar">MG</div><div>
+      <h3>Manager · Shift lead</h3>
+      <p>Runs the counter and the roster. Covers when clerks are stuck and makes sure takings match at the end of the day.</p>
+      <p><b>Goals.</b> Reset a clerk’s PIN, suspend or end shifts, check refunds.</p>
+      <p><b>Frustrations.</b> Shift totals that don’t match the till, and refunds that are hard to trace.</p>
+      <p><b>Flows.</b> LO4, MA1, MC1, RE1.</p>
+    </div></div>
+    <div class="card persona"><div class="avatar">CL</div><div>
+      <h3>Clerk · Counter staff</h3>
+      <p>Often casual or new, and serving a queue. Sells newspapers and snacks too. Ticketing is a small part of the job.</p>
+      <p><b>Goals.</b> Top up or sell a pass in seconds, take cash or card, print a receipt, end the shift cleanly.</p>
+      <p><b>Frustrations.</b> Unclear errors, and not knowing whether the card was actually loaded.</p>
+      <p><b>Flows.</b> TA1–TA4, MC1, LO4, UT1.</p>
+    </div></div>
+  </div></div>
+</div></section>
+
+<section class="cs-section" id="decisions"><div class="wrap">
+  <div class="head"><div class="num">09</div><div><h2>Design Decisions</h2><p>Decisions that are visible in the screens.</p></div></div>
+  <div class="body">
+    <div class="grid g2">
+      <div class="card"><h3>Card first, then cart</h3><p>Every sale starts with Transact → Read card. Manage Card then shows the balance, passes and last transaction before the clerk chooses Top Up or Add Pass. Items go into a cart, so one sale can hold several products.</p><p>Trade-off: the sale starts with a read, so the clerk sees the card before taking money.</p></div>
+      <div class="card"><h3>One home grid, filtered by role</h3><p>Admin, Manager and Clerk all see the same tile layout and slide-out menu, with only the tiles their role allows. Training one role prepares people for the others.</p><p>Trade-off: roles share one layout, so a person moving from clerk to manager already knows the grid.</p></div>
+      <div class="card"><h3>Never take money without loading the card</h3><p>After payment, the clerk is sent to Load Card. Cancelling there opens a choice: “Refund” cancels the transaction and starts a refund, “Dismiss” goes back to loading.</p><p>Trade-off: Load Card cannot be waved away. The clerk has to refund or go back to loading.</p></div>
+      <div class="card"><h3>A cash check step</h3><p>For cash, a Confirm Payment screen asks the clerk to verify they have collected the money before the card is loaded. A note says this screen appears only when the payment method is cash.</p><p>Trade-off: cash gains a confirmation screen that card payments do not show.</p></div>
+      <div class="card"><h3>Configurable payment and limits</h3><p>Notes record that credit/debit can use an integrated payment app or an external POS device, and that the minimum and maximum top-up amounts are configurable. An inline error shows the allowed range.</p><p>Trade-off: the UI does not hard-code one payment device or one amount range. It shows the range the configuration allows.</p></div>
+      <div class="card"><h3>Errors that match the API</h3><p>The API reports a wrong customer ID, but it does not say whether the User ID or the PIN is wrong. So the design shows a single “Incorrect User ID or PIN” and highlights both fields.</p><p>Trade-off: the message cannot point at one field, because the API does not know which one failed.</p></div>
+      <div class="card"><h3>Refunds read as negative</h3><p>History and reports show refunds with a minus sign. The board explains this as the standard convention: a refund lowers the merchant’s takings, for example −$50.</p><p>Trade-off: a refund looks like a negative taking, so the shift total still adds up.</p></div>
+      <div class="card"><h3>Plain security states</h3><p>Separate full-screen dialogs for Device Deactivated, Account Not Active, PIN Reset Required and Auto-Logout. Each says what happened and who to contact.</p><p>Trade-off: each security event takes over the screen, with one action, instead of a short toast.</p></div>
+      <div class="card"><h3>Shifts with a paper trail</h3><p>End Shift prints a report with totals by transaction type and by payment type. Suspend Shift lets a clerk step away without closing the day.</p><p>Trade-off: ending a shift always prints. Suspending does not close the day’s takings.</p></div>
+      <div class="card"><h3>Training built in</h3><p>UT1 pairs every key screen with a Training overlay that explains it. New staff learn on the real interface.</p><p>Trade-off: training uses the live screens, so there is no separate manual to keep in step with the app.</p></div>
+    </div>
+    <figure class="figure">
+      <img loading="lazy" src="images/flow-new-card-payment-detail.webp" width="1362" height="1341" alt="Detail of flow TA3: Load Card with a Cancel Transaction dialog offering Refund or Dismiss, the Confirm Payment screen for cash asking the clerk to verify payment, Transaction Complete with Skip Receipt and Print Receipt, and two printed tax invoice receipts for credit/debit and cash.">
+      <figcaption><strong>Decisions 3 and 4 in the flow.</strong> Load Card cannot be dismissed without a choice, and a cash sale gets its own confirmation screen.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img loading="lazy" src="images/flow-register-device-detail.webp" width="1560" height="1000" alt="Register Device flow: log-in, step 1 asking for Retailer ID, User ID and PIN, step 2 to select the organisation and physical address, Success confirmation, then the Admin home. Below are error states for an incorrect Retailer ID and an incorrect User ID or PIN, with yellow notes about the API.">
+      <figcaption><strong>Decision 6 in the flow.</strong> Annotations on the board explain each error state from what the API returns.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="cs-section" id="prototype"><div class="wrap">
+  <div class="head"><div class="num">10</div><div><h2>Prototype</h2><p>Wired flows, end to end. Pink hotspots mark the tap on each screen, and arrows lead to the next screen, including the branches for errors and alternate paths.</p></div></div>
+  <div class="body">
+    <p>Every frame on the board is laid out as a connected flow. TA1 shows the whole sale from the home screen to the receipt, with separate cash and credit/debit paths. There is no separate public prototype link; the board is the prototype.</p>
+    <figure class="figure">
+      <img loading="lazy" src="images/flow-existing-card-detail.webp" width="1400" height="700" alt="Start of flow TA1: Admin home, Read Card, Manage Card showing a $5.00 balance and passes, Top Up with a keypad and $10 to $40 quick amounts, Cart, Checkout with Cash and Credit/Debit buttons, and Confirm Payment. Pink dots mark each tap and arrows link the screens.">
+      <figcaption><strong>TA1, first half.</strong> Home → Read Card → Manage Card → Top Up → Cart → Checkout → Confirm Payment. The yellow note reads “Minimum amount, maximum amount are configurable.”</figcaption>
+    </figure>
+    <div class="card">
+      <h3>How the prototype was used</h3>
+      <p>The wired flows were walked through with the Cubic teams, path by path, including error and alternate branches. Task scenarios such as “top up an existing card with cash” or “sell a new card with a pass” were stepped through end to end to check the logic and the wording before build.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="cs-section" id="uikit"><div class="wrap">
+  <div class="head"><div class="num">11</div><div><h2>UI Kit</h2><p>The project’s own visual language, shown as a specimen. The board has no separate component page. This kit is put together from the components the flows repeat. Colours were sampled from the screens.</p></div></div>
+  <div class="body">
+    <div class="swatches">
+      <div class="swatch"><i style="background:#242B4C"></i><span><b>Navy</b><br>#242B4C<br>Headers, tiles, primary buttons</span></div>
+      <div class="swatch"><i style="background:#EF60A3"></i><span><b>Translink pink</b><br>#EF60A3<br>Log-in action, brand mark</span></div>
+      <div class="swatch"><i style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E4E6EB"></i><span><b>White</b><br>#FFFFFF<br>Cards, secondary tiles</span></div>
+      <div class="swatch"><i style="background:#E8EAEF"></i><span><b>Light grey</b><br>#E8EAEF<br>Dialog headers, page background (approximate)</span></div>
+    </div>
+    <div class="card">
+      <h3>Type and touch</h3>
+      <p>The board does not name a typeface. Type, spacing and component sizes follow Android conventions for a handheld. One-handed use and large touch targets set the tile and button sizes. On screen, the hierarchy is a short tile or dialog title, one plain sentence, and a single action. Printed receipts and shift reports use a shared layout: retailer, device and user IDs, then lines by transaction type and payment type. The figures in those receipts are sample data.</p>
+    </div>
+    <div class="grid g2">
+      <figure class="figure"><img loading="lazy" src="images/kit-home-tiles.webp" width="270" height="450" alt="Admin home screen showing the tile system: large navy Transact and Tickets tiles, medium navy Last Transaction and Reports tiles, and white outlined tiles for Manage Accounts, Manage Shifts, Settings and Log Out."><figcaption><strong>Tiles.</strong> Three sizes, in order of how often they are used.</figcaption></figure>
+      <figure class="figure"><img loading="lazy" src="images/kit-shift-report-receipt.webp" width="260" height="660" alt="Printed shift report with retailer address, device and user IDs, start and end time, a summary by transaction type with counts and takings, and a summary by payment type including negative refund rows."><figcaption><strong>Printed receipt.</strong> A shared layout for shift reports and sale receipts. The figures are sample data.</figcaption></figure>
+      <figure class="figure"><img loading="lazy" src="images/kit-dialogs.webp" width="1010" height="400" alt="Four modal dialogs with grey title bars, a large icon, a message and a navy OK button: Device Deactivated, Account Not Active, PIN Reset Required and Auto-Logout."><figcaption><strong>Dialogs.</strong> Title, icon, one plain sentence and a single action.</figcaption></figure>
+      <figure class="figure"><img loading="lazy" src="images/kit-slideout-menu.webp" width="1120" height="460" alt="The Read Card screen and the slide-out navigation menu in Admin, Manager and Clerk versions, with icon and chevron rows."><figcaption><strong>Navigation.</strong> The slide-out menu repeats the home tiles for each role.</figcaption></figure>
+    </div>
+    <figure class="figure"><img loading="lazy" src="images/kit-balances-passes.webp" width="340" height="180" alt="Component states for card balance and passes: positive balance, negative balance, one pass, and multiple consecutive passes."><figcaption><strong>Card status.</strong> States for positive and negative balances and for one or several passes.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="cs-section dark" id="final"><div class="wrap">
+  <div class="head"><div class="num">12</div><div><h2>Final Design</h2><p>Thirteen flows, from getting in to learning the app.</p></div></div>
+  <div class="body">
+    <div class="grid g2">
+      <div class="card"><div class="tag">LO1</div><h3>Log In</h3><p>Splash, 6-digit User ID and PIN with a numeric keypad, role-based landing. Errors for out of service, incorrect entry and empty fields, plus dialogs for device and account states. Connection errors for the internet and the back office.</p></div>
+      <div class="card"><div class="tag">LO2</div><h3>Login › Forgot PIN</h3><p>Admin only: password recovery, a security question, a verification code, a new PIN. Error states for a wrong answer, a wrong code and a PIN mismatch.</p></div>
+      <div class="card"><div class="tag">LO3</div><h3>Login › Register Device</h3><p>Admin only: Retailer ID, User ID and PIN, then business and physical address, then success. Also Activate Admin Account.</p></div>
+      <div class="card"><div class="tag">LO4</div><h3>Log Out / End Shift</h3><p>Log out per role, end shift with a printed shift report, suspend shift, auto log-out.</p></div>
+      <div class="card"><div class="tag">HO1</div><h3>Home/Menu</h3><p>Home screens for Admin, Manager and Clerk, and the slide-out menu.</p></div>
+      <div class="card"><div class="tag">UT1</div><h3>In-App User Training</h3><p>A Training overlay for every key screen, from Log In to New User Account.</p></div>
+      <div class="card"><div class="tag">MC1</div><h3>Manage Card</h3><p>Balances and passes, print card details, history (transactions and journeys, existing and new design), refund the last transaction, transactions with several products, error screens.</p></div>
+      <div class="card"><div class="tag">TA1</div><h3>Add Value to Existing Card</h3><p>Top up with cash or credit/debit, load card, receipt.</p></div>
+      <div class="card"><div class="tag">TA2</div><h3>Add Pass to Existing Card</h3><p>Pick a pass (for example go explore), cart, cash or credit/debit.</p></div>
+      <div class="card"><div class="tag">TA3</div><h3>Add Value to New Card</h3><p>New card with issuance fee and deposit, top up, payment, load card, receipts, error screens.</p></div>
+      <div class="card"><div class="tag">TA4</div><h3>Add Pass to New Card</h3><p>A new card with a pass, error screens.</p></div>
+      <div class="card"><div class="tag">RE1</div><h3>Transaction Reports</h3><p>Daily and monthly reports with a date picker for Admin and Manager, a Clerk version, alternate screens and printed reports.</p></div>
+      <div class="card"><div class="tag">MA1</div><h3>Manage Accounts</h3><p>Search users, edit details, change PIN, add a new user, delete, suspend, reactivate and unlock accounts.</p></div>
+    </div>
+    <h3>Getting in</h3>
+    <figure class="figure"><img loading="lazy" src="images/lo1-log-in.webp" width="2000" height="2597" alt="Frame LO1 Log In: splash, empty and filled log-in, a loading state, and the Admin, Manager and Clerk homes. Below are error screens for out of service, incorrect entry and empty fields, dialogs for device deactivated, account suspended, PIN reset and auto-logout, and internet and back-office connection errors."><figcaption><strong>LO1 — Log In.</strong> Includes every error and connection state.</figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/lo2-forgot-pin.webp" width="2000" height="2014" alt="Frame LO2 Forgot PIN: password recovery, security question, verification code and reset PIN screens, an alternate path, and error states for a wrong answer, a wrong verification code and a PIN mismatch."><figcaption><strong>LO2 — Forgot PIN.</strong> “Completed by Admin only. Clerks contact Local Admin for PIN resets.”</figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/lo3-register-device.webp" width="2000" height="2311" alt="Frame LO3: the Register Device flow with error states and API notes, and the Activate Admin Account flow with an invalid-information error."><figcaption><strong>LO3 — Register Device and Activate Admin Account.</strong></figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/lo4-log-out-end-shift.webp" width="2000" height="2032" alt="Frame LO4: log-out options per role, End Shift confirmation and shift-ended screen with a printed shift report, Suspend Shift, and Auto Log Out."><figcaption><strong>LO4 — Log Out / End Shift.</strong></figcaption></figure>
+    <h3>Selling</h3>
+    <figure class="figure"><img loading="lazy" src="images/ta1-add-value-existing-card.webp" width="2000" height="1949" alt="Frame TA1: cash payment and credit/debit payment flows for topping up an existing card, with load card, error dialogs and receipts."><figcaption><strong>TA1 — Add Value to Existing Card.</strong> Cash and credit/debit paths. A note explains the two credit/debit modes: an integrated payment app or an external POS device.</figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/ta2-add-pass-existing-card.webp" width="2000" height="1796" alt="Frame TA2: choose a pass, cart, checkout, then cash and credit/debit payment paths with error states and receipts."><figcaption><strong>TA2 — Add Pass to Existing Card.</strong></figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/ta3-add-value-new-card.webp" width="2000" height="1008" alt="Frame TA3: a new card with no value, top up, cart with issuance fee and deposit, checkout, payment, load card, transaction complete and receipts, plus error screens."><figcaption><strong>TA3 — Add Value to New Card.</strong> The issuance fee and deposit get their own lines in the cart and on the receipt.</figcaption></figure>
+    <figure class="figure"><img loading="lazy" src="images/ta4-add-pass-new-card.webp" width="2000" height="887" alt="Frame TA4: add a pass to a new card through to the receipt, with error screens."><figcaption><strong>TA4 — Add Pass to New Card.</strong></figcaption></figure>
+    <h3>Cards, reports and accounts</h3>
+    <div class="grid g2">
+      <figure class="figure"><img loading="lazy" src="images/mc1-manage-card.webp" width="1069" height="2662" alt="Frame MC1: Manage Card states, balances and passes components, Print Card Details, History with the minus-sign convention note, existing versus new journeys history, Refund Last Transaction and error screens."><figcaption><strong>MC1 — Manage Card.</strong></figcaption></figure>
+      <figure class="figure"><img loading="lazy" src="images/ma1-manage-accounts.webp" width="1569" height="2662" alt="Frame MA1: user list, edit user, change PIN, add new user, and delete, suspend, reactivate and unlock account flows with confirmations."><figcaption><strong>MA1 — Manage Accounts.</strong></figcaption></figure>
+    </div>
+    <figure class="figure"><img loading="lazy" src="images/re1-transaction-reports.webp" width="2000" height="1722" alt="Frame RE1: daily and monthly transaction reports with a calendar date picker for Admin and Manager, the Clerk version, alternate screens and printed reports."><figcaption><strong>RE1 — Transaction Reports.</strong></figcaption></figure>
+    <h3>Learning the app</h3>
+    <figure class="figure"><img loading="lazy" src="images/ut1-in-app-training.webp" width="1143" height="2662" alt="Frame UT1: a grid of screen pairs, each showing a real screen next to its Training overlay, from Log In and Home to Sell Ticket, Refund Tickets, Reports, Settings and Manage Accounts."><figcaption><strong>UT1 — In-App User Training.</strong> The training screens also list ticket sales by flat fare, zonal and point to point, rider type and ticket printing. These do not have their own flow frame on this board.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="cs-section" id="outcome"><div class="wrap">
+  <div class="head"><div class="num">13</div><div><h2>Outcome</h2><p>What shipped in the design, and what the work made clear.</p></div></div>
+  <div class="body">
+    <div class="grid g2">
+      <div class="card">
+        <h3>Delivered</h3>
+        <ul>
+          <li><b>End-to-end designs for 13 flows.</b> Access, home, selling, card management, reporting, accounts and training, each with its error and edge states.</li>
+          <li><b>A role-based experience.</b> One layout for Admin, Manager and Clerk, with permissions applied the same way across the home screen, menu and flows.</li>
+          <li><b>Built-in training.</b> A Training overlay for every key screen, so new staff learn on the real interface.</li>
+          <li><b>An error-recovery model.</b> Refund-or-Dismiss when loading is cancelled, a cash check step, plain security dialogs, and errors written from what the API actually returns.</li>
+          <li><b>A developer-ready specification.</b> Notes on API behaviour and configuration sit next to the screens they affect.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What I learned</h3>
+        <ul>
+          <li>On a shared counter device, errors are designed from what the API can actually report, not from the ideal message.</li>
+          <li>The riskiest moment is between payment and loading the card, so that step gets the most protection.</li>
+          <li>A tile grid filtered by role is easier to train and support than separate apps for each role.</li>
+          <li>Built-in training does work a manual would otherwise have to do for staff who change often.</li>
+          <li>Annotating API limits on the board saves rework later, because developers and designers read the same source.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Public sources say go card and Smart Ticketing run side by side until the end of 2027, so the retailer counter keeps serving people who pay with a card or with cash. The flows are built for that counter: read a card, take cash or credit/debit, load it, print a receipt, and close the shift.</p>
+    <p>Case study of the Translink Merchant app, designed by Suvarna Myneni for Cubic Transportation Systems. Screens are from the project design board. Receipt and report figures in the screens are sample data. Translink, go card and Cubic are trademarks of their owners. This is not an official Cubic or Translink page.</p>
+  </div>
+</div></section>
+
+<section class="cs-section" id="metrics"><div class="wrap">
+  <div class="head"><div class="num">14</div><div><h2>Metrics</h2><p>These are the design goals and targets the work was aimed at, and what we would measure to check them. They are targets, not measured results.</p></div></div>
+  <div class="body">
+    <div class="grid g4">
+      <div class="metric"><div class="v">&lt; 30 s</div><div class="l">Top-up from card read to receipt</div><div class="n">Target</div></div>
+      <div class="metric"><div class="v">90%+</div><div class="l">First-try success on core sales tasks</div><div class="n">Target</div></div>
+      <div class="metric"><div class="v">Zero</div><div class="l">Paid-but-not-loaded cards, via Refund or Dismiss</div><div class="n">Target</div></div>
+      <div class="metric"><div class="v">1</div><div class="l">In-app training session before a new clerk is productive</div><div class="n">Target</div></div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>What we would measure</th><th>Why it matters</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Time per top-up transaction</td><td>Queue pressure at the counter</td><td>Target: under 30 seconds from card read to receipt</td></tr>
+          <tr><td>First-try task success</td><td>Clerks get it right without help</td><td>Target: 90%+ on core sales tasks</td></tr>
+          <tr><td>Payment taken but card not loaded</td><td>The costliest error for the customer</td><td>Target: zero, by always routing through Refund or Dismiss</td></tr>
+          <tr><td>Clerk onboarding</td><td>Effect of in-app training</td><td>Target: a new clerk productive after a single in-app training session</td></tr>
+          <tr><td>Retailer support calls about PINs, devices and errors</td><td>Support load on the Cubic call centre</td><td>Target: fewer calls, through self-explaining dialogs and role-based PIN resets</td></tr>
+          <tr><td>Shift reconciliation</td><td>Trust in the shift report</td><td>Target: shift report totals match the till without manual rework</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Targets are design goals for the experience. They are not reported production results.</p>
+  </div>
+</div></section>
+</main>
+
+<div class="cs-next"><div class="wrap">
+  <div><small>Previous</small><a href="https://suvarnamyneni-project.github.io/amazon-prime-music-case-study/">Amazon Prime Music</a></div>
+  <div style="text-align:right"><small>Next project</small><a href="https://suvarnamyneni-project.github.io/askchemille-case-study/">AskChemille</a></div>
+</div></div>
+<footer class="cs-foot"><div class="wrap">© 2026 Suvarna Myneni · <a href="https://www.linkedin.com/in/suvarnamyneni/">LinkedIn</a></div></footer>
 </body>
 </html>
