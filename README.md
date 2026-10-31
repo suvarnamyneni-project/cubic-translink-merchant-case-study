@@ -6,7 +6,7 @@ The page uses the shared case-study layout and this process: My Role, Design Pro
 
 All screens are crops of the project design board. Public facts link to their sources. The Metrics section lists design targets, not measured production results. The page styles come from `case-study.css`.
 
-**Live site:** https://suvarnamyneni-project.github.io/cubic-translink-merchant-case-study/
+**Live site:** https://suvarnamyneni.github.io/cubic-translink-merchant-case-study/
 
 ## View it
 
